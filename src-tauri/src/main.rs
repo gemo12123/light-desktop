@@ -7,9 +7,7 @@ use tauri::{Manager, SystemTray, SystemTrayMenu, SystemTrayEvent, CustomMenuItem
 
 fn main() {
     tauri::Builder::default()
-        // .invoke_handler(tauri::generate_handler!(first_tauri))
-        .invoke_handler(tauri::generate_handler!(window::app_add_event))
-        .invoke_handler(tauri::generate_handler!(window::load))
+        .invoke_handler(tauri::generate_handler!(first_tauri, window::load, window::app_add_event))
         .system_tray(SystemTray::new()
             .with_menu(SystemTrayMenu::new()
                 .add_item(CustomMenuItem::new("showMain", "展示主界面"))
@@ -58,8 +56,8 @@ fn main() {
         .expect("error while running tauri application");
 }
 
-// #[tauri::command]
-// fn first_tauri(str: &str) -> String {
-//     println!("execute....");
-//     format!("First tauri! Fisrt {}", str)
-// }
+#[tauri::command]
+fn first_tauri(str: &str) -> String {
+    println!("execute....");
+    format!("First tauri! Fisrt {}", str)
+}

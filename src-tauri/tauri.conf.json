@@ -14,7 +14,7 @@
     "allowlist": {
       "all": true,
       "fs":{
-        "scope": ["$HOME/test-tauri/*"],
+        "scope": ["$HOME/light-desktop/*"],
         "all": true
       }
     },
